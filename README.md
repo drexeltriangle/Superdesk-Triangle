@@ -5,6 +5,10 @@
 [![Code Climate](https://codeclimate.com/github/superdesk/superdesk/badges/gpa.svg)](https://codeclimate.com/github/superdesk/superdesk)
 [![Requirements Status](https://requires.io/github/superdesk/superdesk/requirements.svg?branch=master)](https://requires.io/github/superdesk/superdesk/requirements/?branch=master)
 
+This repository is a fork of the superdesk/superdesk GitHub repository 1.0 branch. It contains all custom configuration, plugins, code and documentation for The Triangle.
+
+**The only branch that should be used for a production system is triangle-prod.** For all other development and testing work, follow The Triangle branching strategy.
+
 Superdesk is an open source end-to-end news creation, production, curation,
 distribution and publishing platform developed and maintained by Sourcefabric
 with the sole purpose of making the best possible software for journalism. It
