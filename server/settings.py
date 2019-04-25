@@ -10,6 +10,7 @@
 # at https://www.sourcefabric.org/superdesk/license
 
 import os
+import json
 from pathlib import Path
 from superdesk.default_settings import INSTALLED_APPS
 
@@ -33,6 +34,7 @@ if init_data.exists():
 
 INSTALLED_APPS.extend([
     'apps.languages',
+    'apps.legal_archive'
 ])
 
 RENDITIONS = {
@@ -62,3 +64,10 @@ SECRET_KEY = env('SECRET_KEY', '')
 NO_TAKES = True
 
 DEFAULT_LANGUAGE = 'en'
+
+LANGUAGES = [
+    {'language': 'en', 'label': 'English', 'source': False, 'destination': False}
+]
+
+# Make sure legal archive is enabled
+LEGAL_ARCHIVE = True

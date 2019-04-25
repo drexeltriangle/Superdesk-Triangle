@@ -6,11 +6,16 @@
  */
 module.exports = function(grunt) {
     return {
-        defaultRoute: '/workspace/personal',
+		defaultRoute: '/workspace/personal',
+		
+		server: {
+            url: 'https://superdesk.thetriangle.org/api',
+            ws: 'wss://superdesk.thetriangle.org/ws'
+        },
 
         view: {
             timeformat: 'HH:mm',
-            dateformat: 'DD.MM.YYYY'
+            dateformat: 'MM.DD.YYYY'
         },
 
         features: {
