@@ -6,6 +6,8 @@
  */
 module.exports = function(grunt) {
     return {
+		apps: ['triangle.apps'],
+		importApps: ['../triangle'],
 		defaultRoute: '/workspace/personal',
 		
 		server: {
