@@ -34,7 +34,10 @@ if init_data.exists():
 
 INSTALLED_APPS.extend([
     'apps.languages',
-    'apps.legal_archive'
+    'apps.legal_archive',
+
+    'triangle.publish.formatters',
+	'triangle.publish.transmitters'
 ])
 
 RENDITIONS = {
