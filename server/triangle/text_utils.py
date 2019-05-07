@@ -21,4 +21,4 @@ def format_text_content(tag, end_with_crlf=True, crlf_count=2):
     elif para_text != '':
         return para_text
     else:
-return ''
+		return ''

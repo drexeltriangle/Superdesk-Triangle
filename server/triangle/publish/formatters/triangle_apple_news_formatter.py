@@ -667,4 +667,4 @@ class TriangleAppleNewsFormatter(Formatter):
                     revision_markup += '<br><i>{}</i>'.format(ednote)
                 revisions_tag.append('<li>{}</li>'.format(revision_markup))
 
-article['_revision_history'] = '<ul>{}</ul>' .format(''.join(revisions_tag)) if revisions_tag else ''
+        article['_revision_history'] = '<ul>{}</ul>' .format(''.join(revisions_tag)) if revisions_tag else ''

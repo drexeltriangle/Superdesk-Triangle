@@ -20,4 +20,4 @@ class AppleNewsError(SuperdeskPublishError):
 
     @classmethod
     def AppleNewsPublishError(cls, exception=None, destination=None):
-		return AppleNewsError(50001, exception, destination)
+        return AppleNewsError(50001, exception, destination)
