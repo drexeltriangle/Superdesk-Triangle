@@ -21,7 +21,6 @@ from superdesk.utc import utc_to_local
 from superdesk.etree import parse_html, to_string
 from superdesk.text_utils import get_text
 from triangle.text_utils import format_text_content
-#from triangle.utils import is_fact_check
 from triangle.errors import AppleNewsError
 
 
@@ -70,10 +69,9 @@ class TriangleAppleNewsFormatter(Formatter):
         self._set_article_document(apple_news, article)
         return apple_news
 
-    # def can_format(self, format_type, article):
-    #     """Can format text article that are not preformatted"""
-    #     return format_type == self.format_type and is_fact_check(article) \
-    #         and article.get(FORMAT) == FORMATS.HTML
+    def can_format(self, format_type, article):
+        """Can format text article that are not preformatted"""
+        return format_type == self.format_type and article.get(FORMAT) == FORMATS.HTML
 
     def _set_advertising_settings(self, apple_news):
         """Function to set the adversiting settings"""
