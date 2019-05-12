@@ -9,8 +9,8 @@ module.exports = function(grunt) {
 		defaultRoute: '/workspace/personal',
 		
 		server: {
-            url: 'https://superdesk.thetriangle.org/api',
-            ws: 'wss://superdesk.thetriangle.org/ws'
+            url: 'http://localhost/api',
+            ws: 'ws://localhost/ws'
         },
 
         view: {
@@ -27,6 +27,19 @@ module.exports = function(grunt) {
             editorHighlights: true,
             noPublishOnAuthoringDesk: true,
             noMissingLink: true
-        }
+		},
+
+		list: {
+			'priority': [],
+			'firstLine': [
+				'headline'
+			],
+			'secondLine': [
+				'state',
+				'embargo',
+				'update',
+				'expiry'
+			]
+		}
     };
 };
