@@ -6,9 +6,9 @@
  */
 module.exports = function(grunt) {
     return {
-		defaultRoute: '/workspace/personal',
-		
-		server: {
+        defaultRoute: '/workspace/personal',
+
+        server: {
             url: 'http://localhost/api',
             ws: 'ws://localhost/ws'
         },
@@ -27,19 +27,19 @@ module.exports = function(grunt) {
             editorHighlights: true,
             noPublishOnAuthoringDesk: true,
             noMissingLink: true
-		},
+        },
 
-		list: {
-			'priority': [],
-			'firstLine': [
-				'headline'
-			],
-			'secondLine': [
-				'state',
-				'embargo',
-				'update',
-				'expiry'
-			]
-		}
+        list: {
+            'priority': [],
+            'firstLine': [
+                'headline'
+            ],
+            'secondLine': [
+                'state',
+                'embargo',
+                'update',
+                'expiry'
+            ]
+        }
     };
 };
