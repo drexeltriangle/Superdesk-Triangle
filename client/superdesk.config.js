@@ -6,13 +6,13 @@
  */
 module.exports = function(grunt) {
     return {
-		apps: ['triangle.apps'],
-		importApps: ['../triangle'],
-		defaultRoute: '/workspace/personal',
+        apps: ['triangle.apps'],
+        importApps: ['../triangle'],
+        defaultRoute: '/workspace/personal',
 		
-		server: {
-            url: 'https://superdesk.thetriangle.org/api',
-            ws: 'wss://superdesk.thetriangle.org/ws'
+        server: {
+            url: 'http://localhost/api',
+            ws: 'ws://localhost/ws'
         },
 
         view: {
