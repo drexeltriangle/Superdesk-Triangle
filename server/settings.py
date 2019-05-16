@@ -37,7 +37,8 @@ INSTALLED_APPS.extend([
     'apps.legal_archive',
 
     'triangle.publish.formatters',
-	'triangle.publish.transmitters'
+	'triangle.publish.transmitters',
+    'triangle.subscriber_transmit_references'
 ])
 
 RENDITIONS = {
