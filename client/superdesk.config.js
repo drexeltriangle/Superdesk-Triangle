@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         apps: ['triangle.apps'],
         importApps: ['../triangle'],
         defaultRoute: '/workspace/personal',
-		
+
         server: {
             url: 'http://localhost/api',
             ws: 'ws://localhost/ws'
@@ -29,6 +29,19 @@ module.exports = function(grunt) {
             editorHighlights: true,
             noPublishOnAuthoringDesk: true,
             noMissingLink: true
+        },
+
+        list: {
+            'priority': [],
+            'firstLine': [
+                'headline'
+            ],
+            'secondLine': [
+                'state',
+                'embargo',
+                'update',
+                'expiry'
+            ]
         }
     };
 };
