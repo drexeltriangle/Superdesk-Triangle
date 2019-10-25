@@ -19,7 +19,7 @@ Find more information about the client configuration in the README file of the r
 [https://github.com/superdesk/superdesk-client-core](https://github.com/superdesk/superdesk-client-core "") 
 
 ## Installation
-curl -s https://gitlab.com/thetriangle/Superdesk-Triangle/raw/master/docs/install.sh | sudo bash
+`curl -s https://gitlab.com/thetriangle/Superdesk-Triangle/raw/master/docs/install.sh | sudo bash`
 
 ###A special thanks to...
 
