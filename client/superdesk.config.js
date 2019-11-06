@@ -6,8 +6,8 @@
  */
 module.exports = function(grunt) {
     return {
-        apps: ['triangle.apps'],
-        importApps: ['../triangle'],
+        apps: ['triangle.apps', 'superdesk-publisher'],
+        importApps: ['../triangle', 'superdesk-publisher'],
         defaultRoute: '/workspace/personal',
 
         server: {
@@ -42,6 +42,20 @@ module.exports = function(grunt) {
                 'update',
                 'expiry'
             ]
-        }
+        },
+
+	publisher: {
+	    protocol: "http",
+            tenant: '', // subdomain
+            domain: '45.33.72.36', // IP address or domain name of your server where Superdesk Publisher is installed
+            base: 'api/v2',
+
+	    wsProtocol: 'ws',                /* ws or wss (websocket); if unspecified or '' defaults to 'wss' */
+	    wsDomain: '45.33.72.36',  /* domain name (usually domain as above) */
+                                      /* e.g.: example.com, abc.example.com */
+                                      /* tenant, as above, is NOT used for websocket */
+	    wsPath: '/ws',                    /* path to websocket root dir */
+	    wsPort: '8080'
+	}
     };
 };

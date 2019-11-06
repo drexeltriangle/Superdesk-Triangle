@@ -46,3 +46,5 @@ include/
 client/index.html
 client/templates-cache.js
 client/npm-debug.log
+activate.sh
+/server/Profile
