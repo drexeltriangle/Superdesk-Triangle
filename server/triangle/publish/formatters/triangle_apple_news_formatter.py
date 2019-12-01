@@ -23,9 +23,7 @@ from superdesk.text_utils import get_text
 from triangle.text_utils import format_text_content
 from triangle.errors import AppleNewsError
 
-
 logger = logging.getLogger(__name__)
-
 
 class TriangleAppleNewsFormatter(Formatter):
     APPLE_NEWS_VERSION = '1.8'

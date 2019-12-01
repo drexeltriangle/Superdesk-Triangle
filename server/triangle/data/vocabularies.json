@@ -147,20 +147,22 @@
         "items": [
             {"is_active": true, "name": "All", "qcode": "all",
                 "formats": [
-			{"name": "NINJS", "qcode": "ninjs"}, 
-			{"name": "NewsML G2", "qcode": "newsmlg2"},
+			        {"name": "NINJS", "qcode": "ninjs"}, 
+			        {"name": "NewsML G2", "qcode": "newsmlg2"},
                 	{"name": "Newsroom NINJS", "qcode": "newsroom ninjs"}
 		]},
             {"is_active": true, "name": "Digital/Internet", "qcode": "digital",
                 "formats": [
-			{"name": "NINJS", "qcode": "ninjs"}, 
-			{"name": "NewsML G2", "qcode": "newsmlg2"},
-                	{"name": "Newsroom NINJS", "qcode": "newsroom ninjs"},
-			{"name": "Triangle Apple News", "qcode": "Triangle Apple News"}
+                    {"name": "NINJS", "qcode": "ninjs"}, 
+                    {"name": "NINJSv2", "qcode": "ninjs2"},
+			        {"name": "NewsML G2", "qcode": "newsmlg2"},
+                    {"name": "Newsroom NINJS", "qcode": "newsroom ninjs"},
+                    {"name": "Triangle Apple News", "qcode": "Triangle Apple News"},
+                    {"name": "Adobe InDesign (IDML)", "qcode": "idml"}
 		]},
             {"is_active": true, "name": "Wire/Paper", "qcode": "wire",
                 "formats": [
-			{"name": "NITF", "qcode": "nitf"}
+                    {"name": "NITF", "qcode": "nitf"}
 		]}
         ]
     },
