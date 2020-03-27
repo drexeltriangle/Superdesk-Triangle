@@ -187,8 +187,6 @@ pip install -U pip wheel
 
 ## prepare source code
 repo=${repo:-'/opt/superdesk'}
-github=https://github.com/superdesk
-
 [ -d $repo ] || mkdir $repo
 cd $repo
 if [ ! -d $repo/.git ]; then
@@ -204,6 +202,9 @@ if [ ! -d $repo/.git ]; then
 fi
 
 unset repo github
+
+cd /opt/superdesk/client-core
+time npm link
 
 cd /opt/superdesk/server
 [ -f dev-requirements.txt ] && req=dev-requirements.txt || req=requirements.txt
@@ -298,11 +299,6 @@ fi
 unset sample_data
 )
 
-[ -z "${grunt_build-1}" ] || (
-cd /opt/superdesk/client
-time grunt build --webpack-no-progress
-)
-
 # Use latest honcho with --no-colour option
 pip install -U honcho gunicorn
 
@@ -332,6 +328,86 @@ RestartSec=10
 [Install]
 WantedBy=multi-user.target
 EOF
+# tune elasticsearch
+cat <<EOF > /etc/elasticsearch/elasticsearch.yml
+network.bind_host: 0.0.0.0
+node.local: true
+discovery.zen.ping.multicast: false
+path.repo: /var/tmp/elasticsearch
+index.number_of_replicas: 0
+#index.store.type: memory
+#index.refresh_interval: 30s
+
+# Next setting break behave tests
+# index.number_of_shards: 1
+EOF
+echo 'log4j.rootLogger=OFF' > /etc/elasticsearch/logging.yml
+
+# tune mongo
+cat <<EOF > /etc/mongod.conf
+storage:
+  dbPath: /var/lib/mongodb
+  journal:
+    enabled: false
+  engine: wiredTiger
+
+net:
+  port: 27017
+  bindIp: 0.0.0.0
+EOF
+
+systemctl restart elasticsearch mongod
+! type wait_elastic || wait_elastic
+
+# TODO: update superdesk-core to check elastic instead of directory
+# "/tmp/es-backups" because need to fix superdesk/tests/__init__.py#L78
+mkdir -p /tmp/es-backups /var/tmp/elasticsearch
+
+_skip_install inotify-tools || (
+    apt-get update
+    apt-get -y install inotify-tools
+)
+# server watcher
+cat <<"EOF" > /opt/superdesk/watch-server
+[ -d /opt/superdesk/server-core ] && cd /opt/superdesk/server-core || cd /opt/superdesk/server
+while inotifywait -e modify -e create -e delete -r .; do
+    systemctl restart superdesk
+done
+EOF
+cat <<EOF >> /opt/superdesk/server/Procfile
+watch: sh /opt/superdesk/watch-server
+EOF
+
+# client watcher
+cat <<"EOF" > /opt/superdesk/watch-client
+. /opt/superdesk/activate.sh
+cd /opt/superdesk/client
+grunt build --webpack-devtool=cheap-eval-source-map --webpack-no-progress
+
+[ -d /opt/superdesk/client-core ] && cd /opt/superdesk/client-core
+while inotifywait -e modify -e create -e delete -r .; do
+    systemctl restart superdesk-client
+done
+EOF
+service=superdesk-client
+cat <<"EOF" > /etc/systemd/system/$service.service
+[Unit]
+Description=superdesk client watcher
+Wants=network.target
+After=network.target
+
+[Service]
+ExecStart=/bin/sh watch-client
+WorkingDirectory=/opt/superdesk
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+systemctl enable $service
+systemctl restart $service
+unset service
+
 systemctl enable superdesk
 systemctl restart superdesk
 
