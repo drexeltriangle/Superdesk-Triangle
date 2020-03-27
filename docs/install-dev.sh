@@ -188,6 +188,8 @@ pip install -U pip wheel
 
 ## prepare source code
 repo=${repo:-'/opt/superdesk'}
+github=https://github.com/superdesk
+
 [ -d $repo ] || mkdir $repo
 cd $repo
 if [ ! -d $repo/.git ]; then
