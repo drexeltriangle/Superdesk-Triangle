@@ -149,7 +149,8 @@ libfreetype6-dev liblcms2-dev libwebp-dev \
 curl libfontconfig libssl-dev \
 libxml2-dev libxslt1-dev \
 libxmlsec1-dev \
-apt-transport-https
+apt-transport-https \
+wget
 
 # node & npm
 if ! _skip_install nodejs; then
