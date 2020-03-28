@@ -87,6 +87,7 @@ wait_elastic() {
     done
 }
 if ! _skip_install elasticsearch; then
+	apt install wget
     wget --continue https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.4.6/elasticsearch-2.4.6.deb
     wget https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.4.6/elasticsearch-2.4.6.deb.sha1 -O elasticsearch-2.4.6.deb.sha1
     echo "  elasticsearch-2.4.6.deb" >>elasticsearch-2.4.6.deb.sha1
@@ -149,8 +150,7 @@ libfreetype6-dev liblcms2-dev libwebp-dev \
 curl libfontconfig libssl-dev \
 libxml2-dev libxslt1-dev \
 libxmlsec1-dev \
-apt-transport-https \
-wget
+apt-transport-https
 
 # node & npm
 if ! _skip_install nodejs; then
