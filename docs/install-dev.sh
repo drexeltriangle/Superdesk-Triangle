@@ -52,7 +52,7 @@ if ! _skip_install mongodb-org-server; then
 fi
 
 # tune mongo
-cfg=/etc/mongod.conf
+cfg=/etc/mongod.config
 [ -f "${cfg}.bak" ] || mv $cfg $cfg.bak
 cat <<EOF > $cfg
 storage:
@@ -194,7 +194,7 @@ github=https://github.com/superdesk
 cd $repo
 if [ ! -d $repo/.git ]; then
     git init
-    git remote add origin git@gitlab.com:thetriangle/Superdesk-Triangle.git
+    git remote add origin git@github.com:DrexelTriangle/Superdesk-Triangle.git
     git pull origin master
 
     sed -i 's/.*superdesk-core.git.*/-e ..\/server-core/' server/requirements.txt
